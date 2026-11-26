@@ -1,26 +1,497 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fragile Freight</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Abaza — Senior Mobile Developer (Android &amp; Flutter)</title>
+<meta name="description" content="Senior Mobile Developer with 4+ years building Android and Flutter apps across fintech, POS, community, real estate and business management.">
+<meta property="og:title" content="Mohamed Abaza — Senior Mobile Developer">
+<meta property="og:description" content="Android &amp; Flutter · 4+ years · Fintech, POS, community and real-estate apps on Google Play and the App Store.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='28' fill='%233ddc84'%3EMA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: light dark; }
-  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; max-width: 720px; margin: 0 auto; padding: 48px 16px; }
-  h1 { font-size: 2rem; line-height: 1.25; margin-bottom: 0.25rem; }
-  .tagline { opacity: 0.75; margin-top: 0; }
+  :root{
+    --bg:#0b1020; --bg2:#10172b; --card:#141c33; --line:#232d4a;
+    --text:#e8ecf6; --muted:#9aa5c0; --dim:#6b7694;
+    --android:#3ddc84; --flutter:#54c5f8; --accent:#3ddc84;
+    --radius:16px; --max:1080px;
+  }
+  [data-theme="light"]{
+    --bg:#f6f8fc; --bg2:#eef2f9; --card:#ffffff; --line:#dde3ef;
+    --text:#0f172a; --muted:#4b5672; --dim:#7a849c;
+    --android:#16a35a; --flutter:#0b7fc4; --accent:#16a35a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.2}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:Sora,sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:26px;align-items:center;font-size:.92rem;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .theme-btn{background:var(--card);border:1px solid var(--line);color:var(--text);width:38px;height:38px;border-radius:10px;cursor:pointer;display:grid;place-items:center}
+  .theme-btn svg{width:18px;height:18px}
+
+  /* hero */
+  .hero{padding:96px 0 72px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;width:620px;height:620px;right:-180px;top:-200px;border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--flutter) 22%,transparent),transparent 65%);pointer-events:none}
+  .hero::after{content:"";position:absolute;width:520px;height:520px;left:-200px;bottom:-260px;border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--android) 18%,transparent),transparent 65%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:999px;margin-bottom:26px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--android);box-shadow:0 0 0 4px color-mix(in srgb,var(--android) 25%,transparent);animation:pulse 2s infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 7px color-mix(in srgb,var(--android) 8%,transparent)}}
+  .hero h1{font-size:clamp(2.4rem,6.5vw,4.4rem);font-weight:800;letter-spacing:-.035em}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--android),var(--flutter));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-family:"JetBrains Mono",monospace;font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--muted);margin:18px 0 26px}
+  .role b{color:var(--android);font-weight:500}.role i{color:var(--flutter);font-style:normal}
+  .hero p.lead{max-width:640px;color:var(--muted);font-size:1.05rem}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:.94rem;border:1px solid var(--line);background:var(--card);transition:transform .2s,border-color .2s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .btn.primary{background:var(--accent);color:#06210f;border-color:var(--accent)}
+  [data-theme="light"] .btn.primary{color:#fff}
+  .btn svg{width:18px;height:18px}
+  .meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;color:var(--dim);font-size:.9rem}
+  .meta span{display:inline-flex;align-items:center;gap:7px}
+  .meta svg{width:16px;height:16px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .stat strong{display:block;font-family:Sora,sans-serif;font-size:1.9rem;font-weight:700}
+  .stat span{color:var(--muted);font-size:.86rem}
+
+  /* sections */
+  section{padding:72px 0}
+  section.alt{background:var(--bg2)}
+  .sec-head{margin-bottom:38px}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.3rem);margin-top:8px;letter-spacing:-.02em}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .skill-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .skill-card h3{display:flex;align-items:center;gap:10px;font-size:1.1rem;margin-bottom:16px}
+  .skill-card h3 .ico{width:34px;height:34px;border-radius:9px;display:grid;place-items:center}
+  .skill-card.android .ico{background:color-mix(in srgb,var(--android) 16%,transparent);color:var(--android)}
+  .skill-card.flutter .ico{background:color-mix(in srgb,var(--flutter) 16%,transparent);color:var(--flutter)}
+  .skill-card.soft .ico,.skill-card.lang .ico{background:color-mix(in srgb,var(--muted) 15%,transparent);color:var(--muted)}
+  .ico svg{width:19px;height:19px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.84rem;padding:6px 12px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:var(--text)}
+  .lang-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+  .lang-row:last-child{border:0}
+  .lang-row span{color:var(--muted)}
+
+  /* timeline */
+  .timeline{position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--android),var(--flutter),var(--line))}
+  .job{position:relative;margin-bottom:22px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px}
+  .job::before{content:"";position:absolute;left:-28px;top:28px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+  .job.current::before{background:var(--accent)}
+  .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+  .job h3{font-size:1.08rem}
+  .job .co{color:var(--accent);font-weight:600}
+  .job .co a:hover{text-decoration:underline}
+  .when{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--dim);white-space:nowrap}
+  .job ul{margin-top:10px;padding-left:18px;color:var(--muted);font-size:.95rem}
+  .job li{margin:4px 0}
+  .tag-now{font-size:.7rem;font-family:"JetBrains Mono",monospace;background:color-mix(in srgb,var(--android) 18%,transparent);color:var(--android);padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
+
+  /* projects */
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+  .filter{font:inherit;font-size:.88rem;font-weight:500;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;transition:.2s}
+  .filter.active,.filter:hover{color:var(--text);border-color:var(--accent)}
+  .filter.active{background:color-mix(in srgb,var(--accent) 14%,var(--card))}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,opacity .25s}
+  .proj:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+  .proj.hide{display:none}
+  .proj-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+  .proj h3{font-size:1.15rem}
+  .plat{font-family:"JetBrains Mono",monospace;font-size:.72rem;padding:4px 9px;border-radius:6px;white-space:nowrap}
+  .plat.android{background:color-mix(in srgb,var(--android) 15%,transparent);color:var(--android)}
+  .plat.flutter{background:color-mix(in srgb,var(--flutter) 15%,transparent);color:var(--flutter)}
+  .domain{font-size:.8rem;color:var(--dim);margin-bottom:10px}
+  .proj p{color:var(--muted);font-size:.93rem}
+  .proj ul{margin:12px 0 0 18px;color:var(--muted);font-size:.9rem}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+  .stack span{font-size:.75rem;padding:3px 9px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+  .stores{display:flex;gap:8px;margin-top:auto;padding-top:18px;flex-wrap:wrap}
+  .store{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;font-weight:600;padding:7px 12px;border-radius:9px;background:var(--bg2);border:1px solid var(--line);transition:.2s}
+  .store:hover{border-color:var(--accent)}
+  .store svg{width:15px;height:15px}
+
+  /* games */
+  .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .game{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+  .game:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+  .game-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+  .game-icon{width:64px;height:64px;border-radius:16px;flex:none;object-fit:cover;background:linear-gradient(135deg,var(--android),var(--flutter));display:grid;place-items:center;font-family:Sora,sans-serif;font-weight:800;color:#06210f;font-size:1.4rem;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .game h3{font-size:1.05rem}
+  .game .cat{font-size:.8rem;color:var(--dim)}
+  .game p{color:var(--muted);font-size:.92rem}
+  .game .hl{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:.75rem;padding:4px 9px;border-radius:6px;background:color-mix(in srgb,var(--android) 15%,transparent);color:var(--android);align-self:flex-start}
+  .game .hl.soon{background:color-mix(in srgb,var(--flutter) 15%,transparent);color:var(--flutter)}
+  .game-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:18px}
+  .game-links .pp{font-size:.8rem;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
+  .game-links .pp:hover{color:var(--text)}
+  .studio{color:var(--muted);margin-top:10px;max-width:620px}
+
+  /* education */
+  .edu{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .edu .ico{width:54px;height:54px;flex:none;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--flutter) 15%,transparent);color:var(--flutter)}
+  .edu .ico svg{width:26px;height:26px}
+  .edu h3{font-size:1.1rem}
+  .edu p{color:var(--muted);font-size:.95rem}
+
+  /* contact */
+  .contact{text-align:center;padding:90px 0}
+  .contact h2{font-size:clamp(1.9rem,4.5vw,2.8rem);letter-spacing:-.02em}
+  .contact p{color:var(--muted);max-width:520px;margin:14px auto 30px}
+  .contact .cta{justify-content:center}
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--dim);font-size:.85rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    .nav-links a{display:none}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .skills{grid-template-columns:1fr}
+    .hero{padding:64px 0 52px}
+    section{padding:56px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  @media print{nav,.theme-btn,.filters,.hero::before,.hero::after{display:none}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<h1>Fragile Freight: Delivery Under Pressure</h1>
-<p class="tagline">A 2D physics delivery game for Android by Abaza APPs.</p>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo">Mohamed<span>.</span>Abaza</a>
+    <div class="nav-links">
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
 
-<p>Drive a scooter, a pickup or a heavy hauler over mountain roads, and get fragile cargo to the goal in one piece. Earn gems and stars across 20 contracts, then upgrade your vehicles for harder routes.</p>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="badge reveal"><span class="dot"></span> Open to opportunities · Available to relocate</div>
+    <h1 class="reveal">Mohamed Ahmed<br><span class="grad">Abaza</span></h1>
+    <div class="role reveal">// Senior Mobile Developer — <b>Android</b> &amp; <i>Flutter</i></div>
+    <p class="lead reveal">Dedicated Senior Mobile Developer with 4+ years of experience building and maintaining high-performance Android and Flutter applications across fintech, POS, community, real estate, and business management domains. Experienced in delivering scalable mobile solutions, shipping new features, and resolving production issues with cross-functional teams.</p>
+    <div class="cta reveal">
+      <a class="btn primary" href="mailto:mohamed.abaza3296@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Get in touch</a>
+      <a class="btn" href="Mohamed_Abaza_CV.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 21h14"/></svg>Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/mohamed-abaza/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+      <a class="btn" href="https://github.com/M7md-Abaza/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub</a>
+    </div>
+    <div class="meta reveal">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Cairo, Egypt</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+201062131541">+20 106 213 1541</a></span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:mohamed.abaza3296@gmail.com">mohamed.abaza3296@gmail.com</a></span>
+    </div>
 
-<p><a href="https://play.google.com/store/apps/details?id=com.fragilefreight.game">Get the game on Google Play</a></p>
-<p><a href="privacy-policy.html">Privacy Policy</a></p>
-<p>Contact: <a href="mailto:mohamed.abaza3296@gmail.com">mohamed.abaza3296@gmail.com</a></p>
+    <div class="stats">
+      <div class="stat reveal"><strong>4+</strong><span>Years of experience</span></div>
+      <div class="stat reveal"><strong>11</strong><span>Featured projects</span></div>
+      <div class="stat reveal"><strong>100K+</strong><span>Downloads on my own games</span></div>
+      <div class="stat reveal"><strong>5</strong><span>Domains · Fintech to Real Estate</span></div>
+    </div>
+  </div>
+</header>
 
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">01 · Toolbox</div><h2>Technical Skills</h2></div>
+    <div class="skills">
+      <div class="skill-card android reveal">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.5 19.4 6.3a.4.4 0 0 0-.7-.4L16.9 9.1A11 11 0 0 0 12 8a11 11 0 0 0-4.9 1.1L5.3 5.9a.4.4 0 0 0-.7.4l1.8 3.2A10.4 10.4 0 0 0 1 18h22a10.4 10.4 0 0 0-5.4-8.5zM7 15.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm10 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg></span>Android</h3>
+        <div class="chips">
+          <span class="chip">Kotlin</span><span class="chip">Java</span><span class="chip">Android SDK</span><span class="chip">Jetpack Compose</span>
+          <span class="chip">MVVM</span><span class="chip">MVI</span><span class="chip">MVP</span><span class="chip">Clean Architecture</span>
+          <span class="chip">Navigation</span><span class="chip">Paging</span><span class="chip">Room</span><span class="chip">WorkManager</span><span class="chip">LiveData</span>
+          <span class="chip">Hilt</span><span class="chip">Coroutines</span><span class="chip">RxJava</span>
+          <span class="chip">View Binding</span><span class="chip">Data Binding</span>
+          <span class="chip">Retrofit</span><span class="chip">Firebase</span><span class="chip">Socket.IO</span><span class="chip">Glide</span><span class="chip">Picasso</span><span class="chip">Git</span>
+        </div>
+      </div>
+      <div class="skill-card flutter reveal">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.3 1 3.6 11.7l3.3 3.3L20.9 1h-6.6zm0 10.4-5.8 5.8 3.3 3.3L14.3 23h6.6l-5.8-5.8 5.8-5.8h-6.6z"/></svg></span>Flutter</h3>
+        <div class="chips">
+          <span class="chip">Dart</span><span class="chip">Flutter SDK</span><span class="chip">Clean Architecture</span>
+          <span class="chip">Bloc</span><span class="chip">Provider</span><span class="chip">Dio</span><span class="chip">Retrofit</span>
+          <span class="chip">Firebase</span><span class="chip">Socket.IO</span><span class="chip">Cross-platform delivery &amp; maintenance</span>
+        </div>
+      </div>
+      <div class="skill-card soft reveal">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 6 4.8"/></svg></span>Soft Skills</h3>
+        <div class="chips">
+          <span class="chip">Problem Solving</span><span class="chip">Team Collaboration</span><span class="chip">Attention to Detail</span>
+          <span class="chip">Fast Learning</span><span class="chip">Ownership &amp; Timely Delivery</span>
+        </div>
+      </div>
+      <div class="skill-card lang reveal">
+        <h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>Languages</h3>
+        <div class="lang-row">Arabic <span>Native</span></div>
+        <div class="lang-row">English <span>Conversational</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">02 · Career</div><h2>Professional Experience</h2></div>
+    <div class="timeline">
+      <div class="job current reveal">
+        <div class="job-top"><h3>Senior Mobile Engineer (Android &amp; Flutter)<span class="tag-now">NOW</span></h3><span class="when">Jun 2024 – Present</span></div>
+        <div class="co"><a href="https://www.linkedin.com/company/alahlymomknfore-payments/" target="_blank" rel="noopener">Al Ahly Momkn</a></div>
+        <ul>
+          <li>Developing and maintaining Android fintech and POS payment solutions.</li>
+          <li>Supporting payment service enhancements, feature delivery, and issue resolution in production environments.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Senior Mobile Developer (Android &amp; Flutter) — Part-time</h3><span class="when">Jul 2024 – Apr 2026</span></div>
+        <div class="co"><a href="https://www.linkedin.com/company/bridgecom-ae/" target="_blank" rel="noopener">BridgeCom</a></div>
+        <ul><li>Contributing to Android and Flutter products through feature enhancements, maintenance, and bug fixes.</li></ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Mobile Developer (Android &amp; Flutter)</h3><span class="when">Mar 2023 – May 2024</span></div>
+        <div class="co"><a href="https://www.linkedin.com/company/bridgecom-ae/" target="_blank" rel="noopener">BridgeCom</a></div>
+        <ul>
+          <li>Built and maintained mobile applications across multiple business domains.</li>
+          <li>Delivered new features, fixed critical issues, and supported Play Store / App Store releases.</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Android Developer</h3><span class="when">May 2022 – Feb 2023</span></div>
+        <div class="co">Develocity</div>
+        <ul><li>Worked on native Android applications, feature development, and technical issue resolution.</li></ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Android Development Training</h3><span class="when">2 Months · Remote</span></div>
+        <div class="co">Tamkeen</div>
+        <ul><li>Completed practical mobile development training focused on real implementation tasks.</li></ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-top"><h3>Android Development Training</h3><span class="when">3 Months</span></div>
+        <div class="co">ZagSoft (Freelance Team)</div>
+        <ul><li>Participated in hands-on training and project-based mobile development work.</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">03 · Work</div><h2>Selected Projects</h2></div>
+    <div class="filters reveal">
+      <button class="filter active" data-f="all">All</button>
+      <button class="filter" data-f="flutter">Flutter</button>
+      <button class="filter" data-f="android">Native Android</button>
+      <button class="filter" data-f="live">Live on stores</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="games">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">04 · Indie</div><h2>My Games</h2>
+      <p class="studio">Games I design, build and publish myself on Google Play under <b>Abaza APPs</b>.</p></div>
+    <div class="games" id="games-grid"></div>
+  </div>
+</section>
+
+<section id="education" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">05 · Education</div><h2>Education</h2></div>
+    <div class="edu reveal">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M2 9 12 4l10 5-10 5L2 9z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5M22 9v6"/></svg></div>
+      <div>
+        <h3>Bachelor’s Degree in Math &amp; Computer Science</h3>
+        <p>Faculty of Science, Zagazig University · 2020</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">06 · Contact</div>
+    <h2 style="margin-top:8px">Let’s build something great.</h2>
+    <p>Open to senior mobile roles in Android and Flutter — based in Cairo and available to relocate.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:mohamed.abaza3296@gmail.com">mohamed.abaza3296@gmail.com</a>
+      <a class="btn" href="https://wa.me/201062131541" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" href="https://www.linkedin.com/in/mohamed-abaza/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="Mohamed_Abaza_CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Mohamed Abaza · Senior Mobile Developer</footer>
+
+<script>
+const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.9-3.6 2.8 1.6c.8.5.8 1.3 0 1.8l-2.8 1.6-2.9-2.5 2.9-2.5zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg>';
+const ICON_APPLE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.8 1.2 1.8 2.6 3.1 2.6 1.2-.1 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.3 3-2.5.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4.2zM13.9 5c.7-.8 1.1-1.9 1-3-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.2-.6 2.9-1.4z"/></svg>';
+
+const projects=[
+  {name:"Momkn",plat:"android",domain:"POS Fintech",
+   desc:"A fintech POS application used on PAX, Sunmi, and Mobiwire devices for installments, vouchers, top-up, and bill payments.",
+   bullets:["Added and maintained new payment services and business flows.","Investigated and fixed production issues affecting transaction reliability and user experience."],
+   stack:["Kotlin","Java","Retrofit","MVVM","Coroutines","POS devices"]},
+  {name:"Osta",plat:"flutter",domain:"Home Services",
+   desc:"A home services app that connects users with trusted technicians and service providers for maintenance, cleaning, and repair needs.",
+   bullets:["Designed and built the application from scratch.","Implemented core modules for location and user–provider communication."],
+   stack:["Dart","Flutter","Dio/Retrofit","Firebase"],
+   play:"https://play.google.com/store/apps/details?id=com.osta.osta_user"},
+  {name:"City Eye",plat:"flutter",domain:"Community Management",
+   desc:"A gated community app for notices, maintenance requests, bills, guests, and amenity booking.",
+   bullets:["Designed and built the app from scratch.","Implemented core modules focused on convenience and resident engagement."],
+   stack:["Dart","Flutter","Firebase","REST APIs"],
+   ios:"https://apps.apple.com/eg/app/city-eye-app/id6474612743"},
+  {name:"EVD",plat:"android",domain:"POS Fintech",
+   desc:"A POS application for distribution of STC recharge cards, bill payments, and top-up services.",
+   bullets:["Fixed critical issues and enhanced payment-related features.","Improved application stability for daily financial operations."],
+   stack:["Kotlin","Java","Retrofit","MVVM"]},
+  {name:"DFMS STC",plat:"flutter",domain:"Enterprise",
+   desc:"A handed-over mobile application maintained for Google Play and App Store releases.",
+   bullets:["Fixed production issues and added new features.","Supported stability and release readiness across platforms."],
+   stack:["Dart","Flutter","Dio/Retrofit","Firebase"],
+   play:"https://play.google.com/store/apps/details?id=com.ilead.dfms",ios:"https://apps.apple.com/kw/app/dfms/id1666575644"},
+  {name:"MACS",plat:"android",domain:"Order Management",
+   desc:"An order management application used to create invoices for customers and track order status.",
+   bullets:["Designed and built the application from scratch.","Implemented invoice creation and order tracking workflows."],
+   stack:["Kotlin/Java","MVVM","Retrofit"]},
+  {name:"Slide",plat:"flutter",domain:"Investment",
+   desc:"An investment platform connecting project owners with investors — explore opportunities, join collaborative purchasing models, and fund promising businesses.",
+   bullets:["Designed and built the application from scratch."],
+   stack:["Dart","Flutter","Dio/Retrofit","Firebase"]},
+  {name:"Rims UGP",plat:"flutter",domain:"Real Estate CRM",
+   desc:"An application for managing leads, property inventory, contacts, and deals.",
+   bullets:["Resolved issues and enhanced core business features.","Supported production maintenance and feature improvements."],
+   stack:["Dart","Flutter","Bloc/Provider","Dio"],
+   play:"https://play.google.com/store/apps/details?id=com.gulftech.remis",ios:"https://apps.apple.com/kw/app/rims-ugp/id1607748958"},
+  {name:"Real Estate App",plat:"android",domain:"Property Listings",
+   desc:"A property listing application for selling and renting houses, apartments, stores, and land.",
+   bullets:["Designed and built the application from scratch."],
+   stack:["Kotlin/Java","MVVM","Retrofit"]},
+  {name:"Tasks Management",plat:"android",domain:"Productivity",
+   desc:"A task management platform where admins assign work, review progress, and communicate with users.",
+   bullets:["Designed and built the application from scratch."],
+   stack:["Kotlin/Java","Firebase","REST APIs"]},
+  {name:"Develocity Tool",plat:"android",domain:"Crypto Analytics",
+   desc:"A cryptocurrency analysis tool that helps users monitor market insights.",
+   bullets:["Designed and built the application from scratch."],
+   stack:["Kotlin/Java","REST APIs"]}
+];
+
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const grid=document.getElementById("grid");
+grid.innerHTML=projects.map(p=>{
+  const live=!!(p.play||p.ios);
+  const stores=(p.play?`<a class="store" href="${p.play}" target="_blank" rel="noopener">${ICON_PLAY}Google Play</a>`:"")+
+               (p.ios?`<a class="store" href="${p.ios}" target="_blank" rel="noopener">${ICON_APPLE}App Store</a>`:"");
+  return `<article class="proj reveal" data-plat="${p.plat}" data-live="${live}">
+    <div class="proj-top"><h3>${esc(p.name)}</h3><span class="plat ${p.plat}">${p.plat==="flutter"?"Flutter":"Native Android"}</span></div>
+    <div class="domain">${esc(p.domain)}</div>
+    <p>${esc(p.desc)}</p>
+    <ul>${p.bullets.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
+    <div class="stack">${p.stack.map(s=>`<span>${esc(s)}</span>`).join("")}</div>
+    ${stores?`<div class="stores">${stores}</div>`:""}
+  </article>`;
+}).join("");
+
+const games=[
+  {name:"Question or Punish",ar:"سؤال أو عقاب",cat:"Entertainment",
+   icon:"https://play-lh.googleusercontent.com/-zQeFIic7vaEmbEWo8DvKAPDi6tLzdNkx2f7ENp6biUeJ7Dj6LikRvvLYFuxj-FVrX0lc0PXIOH2T8g3gtsL5g=w240-h480",
+   desc:"A party game for friends and family: answer the question or take the punishment. No account or sign-up needed.",
+   hl:"100K+ downloads",play:"https://play.google.com/store/apps/details?id=com.m7mdabaza.questionorpunish",
+   pp:"question-and-punishment-privacy-policy.html"},
+  {name:"Fragile Freight",cat:"Simulation · 2D physics",
+   icon:"https://play-lh.googleusercontent.com/NJzTShkq_9xmb9wpE245Y2u7nJyXvK0vr_FmjXZCe9Er0GPccIzxMvcVjQSzDdWc3mwDqzvSqORlTXb1t3QPMA=w240-h480",
+   desc:"Drive a scooter, a pickup or a heavy hauler over mountain roads and deliver fragile cargo in one piece across 20 contracts.",
+   hl:"New release",play:"https://play.google.com/store/apps/details?id=com.fragilefreight.game",
+   pp:"privacy-policy.html"},
+  {name:"XO Challenge",cat:"Board · Tic Tac Toe",
+   icon:"https://play-lh.googleusercontent.com/lmGwatAQwA3M8Dn2iKKOKM7jbclwgUBopY2jTh4GbJZ_Yf36Q9ql06af0g2WQk-8DeAnVMG6qe5Nrw9cP-FCqsg=w240-h480",
+   desc:"Classic tic-tac-toe: challenge your friends and see who wins.",
+   hl:"★ 4.9 rating",play:"https://play.google.com/store/apps/details?id=com.m7mdabaza.x_ogame",
+   pp:"xo-game-privacy-policy.html"},
+  {name:"Hop & Rush",cat:"Android game",icon:"",
+   desc:"My next game, in the final stretch before release on Google Play.",
+   hl:"Coming soon",soon:true,pp:"hop-rush-privacy-policy.html"}
+];
+const tile=n=>`<div class="game-icon">${n.split(/\s+/).filter(w=>/\w/.test(w)).map(w=>w[0]).join("").slice(0,2)}</div>`;
+document.getElementById("games-grid").innerHTML=games.map((g,i)=>{
+  const icon=g.icon?`<img class="game-icon" src="${g.icon}" alt="${esc(g.name)} icon" loading="lazy" data-i="${i}">`:tile(g.name);
+  return `<article class="game reveal">
+    <div class="game-head">${icon}<div><h3>${esc(g.name)}</h3><div class="cat">${g.ar?esc(g.ar)+" · ":""}${esc(g.cat)}</div></div></div>
+    <p>${esc(g.desc)}</p>
+    <span class="hl${g.soon?" soon":""}">${esc(g.hl)}</span>
+    <div class="game-links">
+      ${g.play?`<a class="store" href="${g.play}" target="_blank" rel="noopener">${ICON_PLAY}Google Play</a>`:""}
+      <a class="pp" href="${g.pp}">Privacy Policy</a>
+    </div>
+  </article>`;
+}).join("");
+document.querySelectorAll("img.game-icon").forEach(img=>img.addEventListener("error",()=>{img.outerHTML=tile(games[img.dataset.i].name)}));
+
+document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  const f=btn.dataset.f;
+  document.querySelectorAll(".proj").forEach(el=>{
+    const show=f==="all"||(f==="live"?el.dataset.live==="true":el.dataset.plat===f);
+    el.classList.toggle("hide",!show);
+  });
+}));
+
+// theme
+const root=document.documentElement;
+let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
+if(saved)root.dataset.theme=saved;
+else if(matchMedia("(prefers-color-scheme: light)").matches)root.dataset.theme="light";
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  root.dataset.theme=root.dataset.theme==="light"?"dark":"light";
+  try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
